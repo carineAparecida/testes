@@ -65,7 +65,7 @@
 	}
 /*	
 $cpf = new Documento();
-$cpf->setNumero("08893339633");
+$cpf->setNumero("74248407035");
 
 var_dump($cpf->getNumero());
 */
