@@ -1,59 +1,30 @@
-
 <?php
 
-class Carro {
 
-	private $modelo;
-	private $motor;
-	private $ano;
+	function incluirClasses($nomeClasse){
 
-	public function getModelo(){
+		if(file_exists($nomeClasse.".php") === true){
 
-		return $this->modelo;
-	} 
+		require_once($nomeClasse.".php");	
 
-	public function setModelo($modelo){
-
-		$this->modelo = $modelo;
+		}
+		
 	}
+	
+	spl_autoload_register("incluirClasses");
+	spl_autoload_register(function($nomeClasse){
 
-	public function getMotor():float{
+		if(file_exists("Abstratas" . DIRECTORY_SEPARATOR. $nomeClasse.".php") === true){
 
-		return $this->motor;
-	}
+			require_once("Abstratas" . DIRECTORY_SEPARATOR. $nomeClasse.".php");	
 
-	public function setMotor($motor){
+		}
 
-		$this->motor = $motor;
-	}
 
-	public function getAno():int{
+	});
 
-		return $this->ano;
-	}
-
-	public function setAno($ano){
-
-		$this->ano = $ano;
-	}
-
-	public function exibir (){
-
-		return array(
-			 "Modelo"=>$this->getModelo(),
-			 "Motor"=>$this->getMotor(),
-			 "Ano"=>$this->getAno()
-		);
-	}
-
-}
-
-$gol = new Carro();
-$gol->setModelo("Gol GT");
-$gol->setMotor("1.6");
-$gol->setAno("2017");
-
-var_dump($gol->exibir());
+	$carro = new DelRey();
+	$carro->acelerar(80);
 
 
 ?>
